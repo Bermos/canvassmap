@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   zoom = 12;
   center: google.maps.LatLngLiteral;
   heatmap: google.maps.visualization.HeatmapLayer;
-  heatmapData: [];
+  heatmapData: {location: google.maps.LatLng, weight: number}[];
   options: google.maps.MapOptions = {
     mapTypeId: 'roadmap',
     disableDefaultUI: true,
@@ -95,7 +95,6 @@ export class AppComponent implements OnInit {
     // Fetch canvass data for current location
     this.http.get(loc.canvassesUrl).subscribe((data: []) => {
       data.forEach((canvass: Canvass) => {
-        // @ts-ignore
         this.markers.push({
           position: {
             lat: canvass.Latitude,
