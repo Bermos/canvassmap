@@ -3,19 +3,24 @@
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav class="sidenav-sidenav" mode="side" [opened]="true">
-    <div *ngIf="selectedEvent">
-      <h2>Event info</h2>
-      <p><b>{{ selectedEvent.info.title }}</b><br>
+    <mat-card *ngIf="selectedEvent">
+      <mat-card-title>Event info</mat-card-title>
+      <mat-card-subtitle>{{ selectedEvent.info.title }}</mat-card-subtitle>
+      <mat-card-content>
+        <p>
       {{ selectedEvent.info.day }}, {{ selectedEvent.info.time }}<br>
       {{ selectedEvent.info.address1 }}<br>
-      {{ selectedEvent.info.postal }} {{ selectedEvent.info.region }}</p>
-      <a [href]="selectedEvent.info.link" target="_blank">Link</a>
-      <br>
-    </div>
+      {{ selectedEvent.info.postal }} {{ selectedEvent.info.region }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button [href]="selectedEvent.info.link" target="_blank">Link</a>
+      </mat-card-actions>
+    </mat-card>
     <h2>Canvass events</h2>
     <mat-list>
-      <mat-list-item *ngFor="let marker of colorList">
-        <img matListAvatar src="{{ labelIconUrl }}{{ marker.color }}&scale=2.0">
+      <mat-list-item *ngFor="let marker of colorList" style="height: 32px">
+        <img matListAvatar src="{{ labelIconUrl }}{{ marker.color }}&scale=2.0" style="height: 30px; width: 30px">
         <p matLine> {{ marker.date }} </p>
       </mat-list-item>
     </mat-list>

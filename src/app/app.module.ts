@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 const appRoutes: Routes = [
   { path: ':loc_id', component: AppComponent },
@@ -31,6 +34,9 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatButtonModule,
     BrowserAnimationsModule,
   ],
   providers: [],

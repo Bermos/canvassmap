@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
     {date: 'Wen Mar 11', color: 'f000ef'}
   ];
   labelIconUrl = 'https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-pin-container-bg_4x.png,icons/onion/SHARED-mymaps-pin-container_4x.png&highlight=ff000000,';
-  private locName;
-  private selectedEvent;
+  locName;
+  selectedEvent;
 
   constructor(private http: HttpClient,
               private router: Router) {
