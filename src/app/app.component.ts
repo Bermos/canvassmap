@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GoogleMap, MapMarker } from '@angular/google-maps';
 import { Router, ActivationEnd } from '@angular/router';
+import { Door } from './objects/door';
+import { Canvass } from './objects/canvass';
 
 @Component({
   selector: 'app-root',
@@ -74,7 +76,7 @@ export class AppComponent implements OnInit {
     // Fetch door data for current location
     this.http.get(loc.doorsUrl).subscribe((data: []) => {
       this.heatmapData = [];
-      data.forEach(door => {
+      data.forEach((door: Door) => {
         this.heatmapData.push({
           location: new google.maps.LatLng(door.Latitude, door.Longitude),
           weight: door.Count > 200 ? 0 : door.Count
@@ -92,7 +94,7 @@ export class AppComponent implements OnInit {
 
     // Fetch canvass data for current location
     this.http.get(loc.canvassesUrl).subscribe((data: []) => {
-      data.forEach(canvass => {
+      data.forEach((canvass: Canvass) => {
         // @ts-ignore
         this.markers.push({
           position: {
