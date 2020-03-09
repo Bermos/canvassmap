@@ -11,11 +11,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 
 const appRoutes: Routes = [
-  { path: 'canvass/:id', component: AppComponent },
-  { path: '**',
-    redirectTo: '/canvass/seattle',
-    pathMatch: 'full'
-  },
+  { path: ':loc_id', component: AppComponent },
+  // { path: '**',
+  //   redirectTo: '/canvass/seattle',
+  //   pathMatch: 'full'
+  // },
 ];
 
 @NgModule({
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
     AppComponent
   ],
   imports: [
-    // RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     GoogleMapsModule,
     HttpClientModule,

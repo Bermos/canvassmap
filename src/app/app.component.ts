@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {GoogleMap, MapMarker} from '@angular/google-maps';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { GoogleMap, MapMarker } from '@angular/google-maps';
+import { Router, ActivationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
       coords: {lat: 47.6453116, lng: -122.3311617},
       canvassesUrl: 'assets/seattle_WA-canvasses.json',
       doorsUrl: 'assets/seattle_WA-doors.json',
-    }
+    },
   };
   markers = [];
   colors = {
@@ -47,15 +48,24 @@ export class AppComponent implements OnInit {
     {date: 'Wen Mar 11', color: 'f000ef'}
   ];
   labelIconUrl = 'https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-pin-container-bg_4x.png,icons/onion/SHARED-mymaps-pin-container_4x.png&highlight=ff000000,';
-  private loc;
+  private locName;
   private selectedEvent;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.loc = this.locations.seattle;
-    this.loadLocation(this.loc);
+    this.router.events.subscribe(val => {
+      if (val instanceof ActivationEnd) {
+        if (this.locations[val.snapshot.params.loc_id]) {
+          this.locName = this.locations[val.snapshot.params.loc_id].name;
+          this.loadLocation(this.locations[val.snapshot.params.loc_id]);
+        } else {
+          console.log('Location not found'); // TODO give user feedback
+        }
+      }
+    });
   }
 
   loadLocation(loc) {
