@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
     {date: 'Tue Mar 10', color: 'ee1700'},
     {date: 'Wen Mar 11', color: 'f000ef'}
   ];
-  labelIconUrl = 'https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-pin-container-bg_4x.png,icons/onion/SHARED-mymaps-pin-container_4x.png,icons/onion/1899-blank-shape_pin_4x.png&highlight=ff000000,';
+  labelIconUrl = 'https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-pin-container-bg_4x.png,icons/onion/SHARED-mymaps-pin-container_4x.png&highlight=ff000000,';
   private loc;
   private selectedEvent;
 
