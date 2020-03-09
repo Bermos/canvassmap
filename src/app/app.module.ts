@@ -12,10 +12,10 @@ import { MatListModule } from '@angular/material/list';
 
 const appRoutes: Routes = [
   { path: ':loc_id', component: AppComponent },
-  // { path: '**',
-  //   redirectTo: '/canvass/seattle',
-  //   pathMatch: 'full'
-  // },
+  { path: '**',
+    redirectTo: '/seattle',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
